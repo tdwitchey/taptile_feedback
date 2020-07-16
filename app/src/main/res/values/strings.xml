@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TapTile Feedback</string>
+    <string name="score">Score:</string>
+    <string name="timer">Timer:</string>
+    <string name="gameover">Game Over</string>
+    <string name="tryagain">Try Again</string>
+    <string name="levelcomplete">Level Complete!</string>
+    <string name="playagain">Play Again</string>
+
+    <string name="easy_level">Easy</string>
+    <string name="med_level">Medium</string>
+    <string name="hard_level">Hard</string>
+</resources>
