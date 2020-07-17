@@ -11,14 +11,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.util.Random;
 
 public class Highscore_Level extends Activity {
 
     private Button panelA, panelB, panelC, panelD, panelE, panelF, panelG, panelH;
     private Button tryAgain, playAgain;
-    private TextView score, display_score;
+    private TextView score, display_score, score_title;
     private CountDownTimer setActive, gameTimer, startGame;
+    private ConstraintLayout level_complete_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -77,7 +80,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -93,7 +96,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -109,7 +112,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -125,7 +128,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -141,7 +144,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -157,7 +160,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -173,7 +176,7 @@ public class Highscore_Level extends Activity {
                     score.setText(""+current_score);
                 }
                 else{
-                    gameOver_State();
+                    show_score();
                 }
             }
         });
@@ -195,7 +198,7 @@ public class Highscore_Level extends Activity {
             public void onFinish() {
                 panel.setText("Fail");
                 panel.setActivated(false);
-                gameOver_State();
+                show_score();
             }
         }.start();
 
@@ -231,12 +234,18 @@ public class Highscore_Level extends Activity {
         });
     }
 
-    private void levelComplete(){
+    private void show_score(){
         setContentView(R.layout.activity_level_complete);
 
         setActive.cancel();
         gameTimer.cancel();
         startGame.cancel();
+
+        level_complete_layout = findViewById(R.id.level_complete_layout);
+        level_complete_layout.setBackgroundColor(Color.BLACK);
+
+        score_title = findViewById(R.id.levelComplete);
+        score_title.setText("Game Over");
 
         display_score = findViewById(R.id.display_score);
         display_score.setText("Your Score: " + score.getText());
@@ -292,7 +301,7 @@ public class Highscore_Level extends Activity {
 
             @Override
             public void onFinish() {
-                levelComplete();
+                gameTimer();
             }
         }.start();
     }
