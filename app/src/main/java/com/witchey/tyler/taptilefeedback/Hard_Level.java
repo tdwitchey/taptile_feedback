@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -54,6 +56,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelA.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelA);
                     resetActive(panelA);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -69,6 +72,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelB.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelB);
                     resetActive(panelB);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -84,6 +88,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelC.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelC);
                     resetActive(panelC);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -99,6 +104,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelD.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelD);
                     resetActive(panelD);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -114,6 +120,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelE.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelE);
                     resetActive(panelE);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -129,6 +136,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelF.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelF);
                     resetActive(panelF);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -144,6 +152,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelG.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelG);
                     resetActive(panelG);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -159,6 +168,7 @@ public class Hard_Level extends Activity {
             public void onClick(View v) {
                 if(panelH.isActivated() == true){
                     haptic_feedback();
+                    tapAnimation(panelH);
                     resetActive(panelH);
                     int current_score = Integer.parseInt(score.getText().toString());
                     current_score += 1;
@@ -334,5 +344,12 @@ public class Hard_Level extends Activity {
                 gameTimer();
             }
         }.start();
+    }
+
+    private void tapAnimation(Button panel){
+        Animation tap = AnimationUtils.loadAnimation(this, R.anim.tap);
+        tap.reset();
+        panel.clearAnimation();
+        panel.startAnimation(tap);
     }
 }

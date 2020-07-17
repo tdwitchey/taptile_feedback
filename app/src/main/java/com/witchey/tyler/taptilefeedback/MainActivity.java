@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
     private Button chooseEasy, chooseMedium, chooseHard;
+    private TextView title_text;
     public static Vibrator vibrate;
 
     @Override
@@ -18,6 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main_menu);
 
         vibrate = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
+        titleAnimation();
 
         chooseEasy = findViewById(R.id.easy_level);
         chooseEasy.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +50,14 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this, Hard_Level.class));
             }
         });
+    }
+
+    private void titleAnimation(){
+        Animation title = AnimationUtils.loadAnimation(this, R.anim.scale);
+        title.reset();
+        title_text = findViewById(R.id.appTitle);
+        title_text.clearAnimation();
+        title_text.startAnimation(title);
     }
 }
 
