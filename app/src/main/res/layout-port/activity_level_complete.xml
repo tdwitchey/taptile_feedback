@@ -39,5 +39,5 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easy_score" />
+        app:layout_constraintTop_toBottomOf="@+id/display_score" />
 </androidx.constraintlayout.widget.ConstraintLayout>
