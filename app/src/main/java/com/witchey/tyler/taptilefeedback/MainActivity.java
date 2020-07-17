@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    private Button chooseEasy, chooseMedium, chooseHard;
+    private Button chooseEasy, chooseMedium, chooseHard, chooseHighscore;
     private TextView title_text;
     public static Vibrator vibrate;
 
@@ -48,6 +48,15 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 finish();
                 startActivity(new Intent(MainActivity.this, Hard_Level.class));
+            }
+        });
+
+        chooseHighscore = findViewById(R.id.highscore_level);
+        chooseHighscore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(MainActivity.this, Highscore_Level.class));
             }
         });
     }

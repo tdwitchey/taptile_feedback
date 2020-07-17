@@ -13,17 +13,17 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class Hard_Level extends Activity {
+public class Highscore_Level extends Activity {
 
     private Button panelA, panelB, panelC, panelD, panelE, panelF, panelG, panelH;
     private Button tryAgain, playAgain;
-    private TextView timer;
+    private TextView score, display_score;
     private CountDownTimer setActive, gameTimer, startGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_hard);
+        setContentView(R.layout.activity_level_highscore);
         startGame();
     }
 
@@ -37,8 +37,8 @@ public class Hard_Level extends Activity {
         panelG = findViewById(R.id.panelG);
         panelH = findViewById(R.id.panelH);
 
-        timer = findViewById(R.id.timer_number);
-        timer.setText("0");
+        score = findViewById(R.id.score_number);
+        score.setText("0");
 
         panelA.setBackgroundColor(Color.LTGRAY);
         panelB.setBackgroundColor(Color.LTGRAY);
@@ -56,6 +56,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelA);
                     resetActive(panelA);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -69,6 +72,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelB);
                     resetActive(panelB);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -82,6 +88,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelC);
                     resetActive(panelC);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -95,6 +104,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelD);
                     resetActive(panelD);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -108,6 +120,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelE);
                     resetActive(panelE);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -121,6 +136,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelF);
                     resetActive(panelF);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -134,6 +152,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelG);
                     resetActive(panelG);
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -147,7 +168,9 @@ public class Hard_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelH);
                     resetActive(panelH);
-
+                    int current_score = Integer.parseInt(score.getText().toString());
+                    current_score += 1;
+                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -203,7 +226,7 @@ public class Hard_Level extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(Hard_Level.this, MainActivity.class));
+                startActivity(new Intent(Highscore_Level.this, MainActivity.class));
             }
         });
     }
@@ -215,13 +238,15 @@ public class Hard_Level extends Activity {
         gameTimer.cancel();
         startGame.cancel();
 
+        display_score = findViewById(R.id.display_score);
+        display_score.setText("Your Score: " + score.getText());
 
         playAgain = findViewById(R.id.playAgain);
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(Hard_Level.this, MainActivity.class));
+                startActivity(new Intent(Highscore_Level.this, MainActivity.class));
             }
         });
     }
@@ -231,7 +256,6 @@ public class Hard_Level extends Activity {
         gameTimer = new CountDownTimer(60000, 500){
             @Override
             public void onTick(long millisUntilFinished) {
-                timer.setText("" + millisUntilFinished/1000);
                 int choice;
                 Random rand = new Random();
                 choice = rand.nextInt(9) + 1;

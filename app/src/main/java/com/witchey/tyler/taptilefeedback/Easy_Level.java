@@ -20,7 +20,7 @@ public class Easy_Level extends Activity {
 
     private Button panelA, panelB, panelC, panelD;
     private Button tryAgain, playAgain;
-    private TextView score, timer, easy_score;
+    private TextView timer;
     private CountDownTimer setActive, gameTimer, startGame;
 
     @Override
@@ -36,9 +36,7 @@ public class Easy_Level extends Activity {
         panelC = findViewById(R.id.panelC);
         panelD = findViewById(R.id.panelD);
 
-        score = findViewById(R.id.score_number);
         timer = findViewById(R.id.timer_number);
-        score.setText("0");
         timer.setText("0");
 
         panelA.setBackgroundColor(Color.LTGRAY);
@@ -53,9 +51,6 @@ public class Easy_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelA);
                     resetActive(panelA);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -69,9 +64,6 @@ public class Easy_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelB);
                     resetActive(panelB);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -85,9 +77,6 @@ public class Easy_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelC);
                     resetActive(panelC);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -101,9 +90,7 @@ public class Easy_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelD);
                     resetActive(panelD);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
+
                 }
                 else{
                     gameOver_State();
@@ -164,15 +151,13 @@ public class Easy_Level extends Activity {
         });
     }
 
-    private void levelComplete_Easy(){
+    private void levelComplete(){
         setContentView(R.layout.activity_level_complete);
 
         setActive.cancel();
         gameTimer.cancel();
         startGame.cancel();
 
-        easy_score = findViewById(R.id.display_score);
-        easy_score.setText("Your Score: " + score.getText());
 
         playAgain = findViewById(R.id.playAgain);
         playAgain.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +199,7 @@ public class Easy_Level extends Activity {
 
             @Override
             public void onFinish() {
-                levelComplete_Easy();
+                levelComplete();
             }
         }.start();
     }

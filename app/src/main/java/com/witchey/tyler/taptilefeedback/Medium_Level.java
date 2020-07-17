@@ -17,7 +17,7 @@ public class Medium_Level extends Activity {
 
     private Button panelA, panelB, panelC, panelD, panelE, panelF;
     private Button tryAgain, playAgain;
-    private TextView score, timer, display_score;
+    private TextView timer;
     private CountDownTimer setActive, gameTimer, startGame;
 
     @Override
@@ -35,9 +35,7 @@ public class Medium_Level extends Activity {
         panelE = findViewById(R.id.panelE);
         panelF = findViewById(R.id.panelF);
 
-        score = findViewById(R.id.score_number);
         timer = findViewById(R.id.timer_number);
-        score.setText("0");
         timer.setText("0");
 
         panelA.setBackgroundColor(Color.LTGRAY);
@@ -54,9 +52,6 @@ public class Medium_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelA);
                     resetActive(panelA);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -70,9 +65,6 @@ public class Medium_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelB);
                     resetActive(panelB);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -86,9 +78,6 @@ public class Medium_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelC);
                     resetActive(panelC);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -102,9 +91,6 @@ public class Medium_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelD);
                     resetActive(panelD);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -118,9 +104,6 @@ public class Medium_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelE);
                     resetActive(panelE);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -134,9 +117,6 @@ public class Medium_Level extends Activity {
                     haptic_feedback();
                     tapAnimation(panelF);
                     resetActive(panelF);
-                    int current_score = Integer.parseInt(score.getText().toString());
-                    current_score += 1;
-                    score.setText(""+current_score);
                 }
                 else{
                     gameOver_State();
@@ -204,8 +184,6 @@ public class Medium_Level extends Activity {
         gameTimer.cancel();
         startGame.cancel();
 
-        display_score = findViewById(R.id.display_score);
-        display_score.setText("Your Score: " + score.getText());
 
         playAgain = findViewById(R.id.playAgain);
         playAgain.setOnClickListener(new View.OnClickListener() {

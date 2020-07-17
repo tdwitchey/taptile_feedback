@@ -12,6 +12,7 @@
         android:id="@+id/levelComplete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:text="@string/levelcomplete"
         android:textColor="#FFFFFF"
@@ -25,8 +26,9 @@
         android:id="@+id/display_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/levelComplete" />
@@ -34,7 +36,8 @@
     <Button
         android:id="@+id/playAgain"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         android:text="@string/playagain"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
