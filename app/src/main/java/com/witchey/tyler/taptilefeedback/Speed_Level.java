@@ -22,7 +22,7 @@ public class Speed_Level extends Activity {
     private TextView score, display_score, score_title;
     private CountDownTimer setActive, gameTimer, startGame;
     private ConstraintLayout level_complete_layout;
-    private long newEvent = 1000;
+    private double newEvent = 1;
     private TextView speed_text;
 
     @Override
@@ -30,7 +30,7 @@ public class Speed_Level extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_speedmode);
         speed_text = findViewById(R.id.speed_text);
-        speed_text.setText("You have " + (newEvent/1000) + " seconds for each press.");
+        speed_text.setText("You have " + newEvent + " second for each press.");
         startGame();
     }
 
@@ -192,7 +192,7 @@ public class Speed_Level extends Activity {
         panel.setBackgroundColor(Color.RED);
         panel.setActivated(true);
 
-        setActive = new CountDownTimer(newEvent, 600){
+        setActive = new CountDownTimer((long)(newEvent * 1000), (long)(newEvent * 1000)){
             @Override
             public void onTick(long millisUntilFinished) {
             }
@@ -209,7 +209,7 @@ public class Speed_Level extends Activity {
                     }
                     @Override
                     public void onFinish() {
-                        gameOver_State();
+                        show_score();
                     }
                 }.start();
             }
@@ -275,7 +275,7 @@ public class Speed_Level extends Activity {
 
     private void gameTimer(){
 
-        gameTimer = new CountDownTimer(10000, newEvent){
+        gameTimer = new CountDownTimer(15000, (long)(newEvent * 1000)){
             @Override
             public void onTick(long millisUntilFinished) {
                 int choice;
@@ -314,10 +314,21 @@ public class Speed_Level extends Activity {
 
             @Override
             public void onFinish() {
-                if (newEvent > 500){
-                    newEvent -= 100;
+                if (newEvent > 0.5){
+                    newEvent -= 0.1;
+                    speed_text.setText("You have " + newEvent + " second(s) for each press.");
+                    new CountDownTimer(3000, 1000){
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            speedAnimation();
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            startGameTimer();
+                        }
+                    }.start();
                 }
-                gameTimer();
             }
         }.start();
     }
@@ -373,5 +384,12 @@ public class Speed_Level extends Activity {
         tap.reset();
         panel.clearAnimation();
         panel.startAnimation(tap);
+    }
+
+    private void speedAnimation(){
+        Animation speed = AnimationUtils.loadAnimation(this, R.anim.tap);
+        speed.reset();
+        speed_text.clearAnimation();
+        speed_text.startAnimation(speed);
     }
 }

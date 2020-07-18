@@ -10,5 +10,5 @@
     <string name="easy_level">Easy</string>
     <string name="med_level">Medium</string>
     <string name="hard_level">Hard</string>
-    <string name="speed_level">High Score Mode</string>
+    <string name="speed_level">Speed Mode</string>
 </resources>
