@@ -11,4 +11,6 @@
     <string name="med_level">Medium</string>
     <string name="hard_level">Hard</string>
     <string name="speed_level">Speed Mode</string>
+
+    <string name="version">Version Alpha 1.0</string>
 </resources>
