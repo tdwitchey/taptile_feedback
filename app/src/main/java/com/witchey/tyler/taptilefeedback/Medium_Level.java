@@ -131,17 +131,28 @@ public class Medium_Level extends Activity {
         panel.setBackgroundColor(Color.RED);
         panel.setActivated(true);
 
-        setActive = new CountDownTimer(1000, 500){
+        setActive = new CountDownTimer(750, 750){
             @Override
             public void onTick(long millisUntilFinished) {
-                panel.setText("" + millisUntilFinished/500);
             }
 
             @Override
             public void onFinish() {
                 panel.setText("Fail");
                 panel.setActivated(false);
-                gameOver_State();
+                gameTimer.cancel();
+                new CountDownTimer(2000, 1){
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        gameOver_State();
+                    }
+                }.start();
+
             }
         }.start();
 
@@ -177,7 +188,7 @@ public class Medium_Level extends Activity {
         });
     }
 
-    private void levelComplete_Medium(){
+    private void levelComplete(){
         setContentView(R.layout.activity_level_complete);
 
         setActive.cancel();
@@ -231,7 +242,7 @@ public class Medium_Level extends Activity {
 
             @Override
             public void onFinish() {
-                levelComplete_Medium();
+                levelComplete();
             }
         }.start();
     }

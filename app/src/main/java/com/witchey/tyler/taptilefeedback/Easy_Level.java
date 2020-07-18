@@ -105,17 +105,27 @@ public class Easy_Level extends Activity {
         panel.setBackgroundColor(Color.RED);
         panel.setActivated(true);
 
-        setActive = new CountDownTimer(1000, 500){
+        setActive = new CountDownTimer(1000, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
-                panel.setText("" + millisUntilFinished/500);
+                //panel.setText(""+millisUntilFinished/333);
             }
 
             @Override
             public void onFinish() {
+                gameTimer.cancel();
                 panel.setText("Fail");
                 panel.setActivated(false);
-                gameOver_State();
+                new CountDownTimer(2000, 1){
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+                    @Override
+                    public void onFinish() {
+                        gameOver_State();
+                    }
+                }.start();
             }
         }.start();
 

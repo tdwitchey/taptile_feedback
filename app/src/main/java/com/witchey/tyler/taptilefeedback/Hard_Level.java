@@ -162,17 +162,28 @@ public class Hard_Level extends Activity {
         panel.setBackgroundColor(Color.RED);
         panel.setActivated(true);
 
-        setActive = new CountDownTimer(1000, 600){
+        setActive = new CountDownTimer(600, 600){
             @Override
             public void onTick(long millisUntilFinished) {
-                panel.setText("" + millisUntilFinished/500);
             }
 
             @Override
             public void onFinish() {
                 panel.setText("Fail");
                 panel.setActivated(false);
-                gameOver_State();
+                gameTimer.cancel();
+                new CountDownTimer(2000, 1){
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        gameOver_State();
+                    }
+                }.start();
+
             }
         }.start();
 
@@ -228,7 +239,7 @@ public class Hard_Level extends Activity {
 
     private void gameTimer(){
 
-        gameTimer = new CountDownTimer(60000, 500){
+        gameTimer = new CountDownTimer(60000, 600){
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished/1000);

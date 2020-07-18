@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="2"
@@ -21,8 +22,8 @@
             android:id="@+id/panelA"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:textSize="25sp"
-            android:hapticFeedbackEnabled="true"/>
+            android:hapticFeedbackEnabled="true"
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/panelB"
@@ -42,8 +43,8 @@
             android:id="@+id/panelD"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:textSize="25sp"
-            android:hapticFeedbackEnabled="true"/>
+            android:hapticFeedbackEnabled="true"
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/panelE"
@@ -94,5 +95,15 @@
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/speed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

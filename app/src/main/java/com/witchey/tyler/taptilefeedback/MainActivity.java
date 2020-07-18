@@ -51,12 +51,12 @@ public class MainActivity extends Activity {
             }
         });
 
-        chooseHighscore = findViewById(R.id.highscore_level);
+        chooseHighscore = findViewById(R.id.speed_level);
         chooseHighscore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(MainActivity.this, Highscore_Level.class));
+                startActivity(new Intent(MainActivity.this, Speed_Level.class));
             }
         });
     }

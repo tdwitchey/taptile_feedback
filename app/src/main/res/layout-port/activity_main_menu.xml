@@ -41,16 +41,16 @@
         android:layout_marginBottom="50dp"
         android:text="@string/hard_level"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/highscore_level"
+        app:layout_constraintBottom_toTopOf="@+id/speed_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/highscore_level"
+        android:id="@+id/speed_level"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
         android:layout_marginBottom="50dp"
-        android:text="@string/high_score_level"
+        android:text="@string/speed_level"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/copyright"
         app:layout_constraintEnd_toEndOf="parent"

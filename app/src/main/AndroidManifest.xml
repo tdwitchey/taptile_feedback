@@ -31,7 +31,7 @@
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Highscore_Level">
+        <activity android:name=".Speed_Level">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>

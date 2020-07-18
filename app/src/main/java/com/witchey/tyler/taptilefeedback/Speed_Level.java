@@ -15,18 +15,22 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.Random;
 
-public class Highscore_Level extends Activity {
+public class Speed_Level extends Activity {
 
     private Button panelA, panelB, panelC, panelD, panelE, panelF, panelG, panelH;
     private Button tryAgain, playAgain;
     private TextView score, display_score, score_title;
     private CountDownTimer setActive, gameTimer, startGame;
     private ConstraintLayout level_complete_layout;
+    private long newEvent = 1000;
+    private TextView speed_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_highscore);
+        setContentView(R.layout.activity_level_speedmode);
+        speed_text = findViewById(R.id.speed_text);
+        speed_text.setText("You have " + (newEvent/1000) + " seconds for each press.");
         startGame();
     }
 
@@ -188,17 +192,26 @@ public class Highscore_Level extends Activity {
         panel.setBackgroundColor(Color.RED);
         panel.setActivated(true);
 
-        setActive = new CountDownTimer(1000, 600){
+        setActive = new CountDownTimer(newEvent, 600){
             @Override
             public void onTick(long millisUntilFinished) {
-                panel.setText("" + millisUntilFinished/500);
             }
 
             @Override
             public void onFinish() {
+                gameTimer.cancel();
                 panel.setText("Fail");
                 panel.setActivated(false);
-                show_score();
+                new CountDownTimer(2000, 1){
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+                    @Override
+                    public void onFinish() {
+                        gameOver_State();
+                    }
+                }.start();
             }
         }.start();
 
@@ -229,7 +242,7 @@ public class Highscore_Level extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(Highscore_Level.this, MainActivity.class));
+                startActivity(new Intent(Speed_Level.this, MainActivity.class));
             }
         });
     }
@@ -255,14 +268,14 @@ public class Highscore_Level extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(Highscore_Level.this, MainActivity.class));
+                startActivity(new Intent(Speed_Level.this, MainActivity.class));
             }
         });
     }
 
     private void gameTimer(){
 
-        gameTimer = new CountDownTimer(60000, 500){
+        gameTimer = new CountDownTimer(10000, newEvent){
             @Override
             public void onTick(long millisUntilFinished) {
                 int choice;
@@ -301,6 +314,9 @@ public class Highscore_Level extends Activity {
 
             @Override
             public void onFinish() {
+                if (newEvent > 500){
+                    newEvent -= 100;
+                }
                 gameTimer();
             }
         }.start();
