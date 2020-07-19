@@ -225,26 +225,7 @@ public class Speed_Level extends Activity {
     }
 
     private void haptic_feedback(){
-        MainActivity.vibrate.vibrate(250);
-    }
-
-
-
-    private void gameOver_State(){
-        setContentView(R.layout.activity_game_over);
-
-        setActive.cancel();
-        gameTimer.cancel();
-        startGame.cancel();
-
-        tryAgain = findViewById(R.id.tryagain);
-        tryAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                startActivity(new Intent(Speed_Level.this, MainActivity.class));
-            }
-        });
+        MainActivity.vibrate.vibrate(100);
     }
 
     private void show_score(){
@@ -316,7 +297,7 @@ public class Speed_Level extends Activity {
             public void onFinish() {
                 if (newEvent > 0.5){
                     newEvent -= 0.1;
-                    speed_text.setText("You have " + newEvent + " second(s) for each press.");
+                    speed_text.setText("You have " + String.format("%.1f", newEvent) + " second(s) for each press.");
                     new CountDownTimer(3000, 1000){
                         @Override
                         public void onTick(long millisUntilFinished) {

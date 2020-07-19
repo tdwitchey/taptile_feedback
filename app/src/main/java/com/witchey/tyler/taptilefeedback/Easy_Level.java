@@ -139,7 +139,7 @@ public class Easy_Level extends Activity {
     }
 
     private void haptic_feedback(){
-        MainActivity.vibrate.vibrate(250);
+        MainActivity.vibrate.vibrate(100);
     }
 
 
